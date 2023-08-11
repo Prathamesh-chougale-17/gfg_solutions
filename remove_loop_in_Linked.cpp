@@ -86,7 +86,8 @@ struct Node
         next = NULL;
     }
 };
-
+1->2->3->4->5->2
+  |___________|
 */
 
 class Solution
@@ -97,33 +98,18 @@ public:
     {
         Node *slow = head;
         Node *fast = head;
+        bool flag = false;
         while (fast != NULL && fast->next != NULL)
         {
             slow = slow->next;
             fast = fast->next->next;
+
             if (slow == fast)
             {
+                flag = true;
                 break;
             }
-        }
-        if (slow == head)
-        {
-            while (fast->next != slow)
-            {
-                fast = fast->next;
-            }
-            fast->next = NULL;
-        }
-        else if (slow == fast)
-        {
-            slow = head;
-            while (slow->next != fast->next)
-            {
-                slow = slow->next;
-                fast = fast->next;
-            }
-            fast->next = NULL;
-        }
+                }
     }
 };
 
